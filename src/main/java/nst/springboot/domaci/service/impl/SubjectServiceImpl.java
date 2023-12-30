@@ -8,16 +8,18 @@ import nst.springboot.domaci.repository.DepartmentRepository;
 import nst.springboot.domaci.repository.SubjectRepository;
 import nst.springboot.domaci.service.SubjectService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional(readOnly = true)
 public class SubjectServiceImpl implements SubjectService {
-    private SubjectRepository subjectRepository;
-    private DepartmentRepository departmentRepository;
-    private SubjectConverter subjectConverter;
+    private final SubjectRepository subjectRepository;
+    private final DepartmentRepository departmentRepository;
+    private final SubjectConverter subjectConverter;
 
     public SubjectServiceImpl(SubjectRepository subjectRepository, DepartmentRepository departmentRepository, SubjectConverter subjectConverter) {
         this.subjectRepository = subjectRepository;
@@ -26,6 +28,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
+    @Transactional
     public SubjectDto save(SubjectDto subjectDto) throws Exception {
         Subject subject = subjectConverter.toEntity(subjectDto);
         if(subject.getDepartment().getId() == null){
@@ -39,10 +42,11 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<SubjectDto> getAll() {
-        return subjectRepository.findAll().stream().map(e -> subjectConverter.toDto(e)).collect(Collectors.toList());
+        return subjectRepository.findAll().stream().map(subjectConverter::toDto).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional
     public void delete(Long id) throws Exception {
         Optional<Subject> subject = subjectRepository.findById(id);
         if(subject.isEmpty()) throw new Exception("Subject does not exist");

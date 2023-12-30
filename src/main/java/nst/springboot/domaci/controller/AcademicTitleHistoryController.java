@@ -2,7 +2,6 @@ package nst.springboot.domaci.controller;
 
 import jakarta.validation.Valid;
 import nst.springboot.domaci.dto.AcademicTitleHistoryDto;
-import nst.springboot.domaci.dto.MemberDto;
 import nst.springboot.domaci.service.AcademicTitleHistoryService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/academicTitleHistory")
 public class AcademicTitleHistoryController {
-    private AcademicTitleHistoryService academicTitleHistoryService;
+    private final AcademicTitleHistoryService academicTitleHistoryService;
 
     public AcademicTitleHistoryController(AcademicTitleHistoryService academicTitleHistoryService) {
         this.academicTitleHistoryService = academicTitleHistoryService;

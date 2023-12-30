@@ -31,6 +31,14 @@
         <sqlFile path="ddl/create-academic-title-history.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="create-director-history" author="bane">
+        <sqlFile path="ddl/create-director-history.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="create-secretary-history" author="bane">
+        <sqlFile path="ddl/create-secretary-history.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
     <changeSet id="init-department" author="d.savic">
         <sqlFile path="dml/init-department.sql" relativeToChangelogFile="true"/>
     </changeSet>

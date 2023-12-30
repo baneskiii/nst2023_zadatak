@@ -1,4 +1,4 @@
-insert into tbl_department(name) values ("department-9");
+insert into tbl_department(name,short_name) values ("department-9","dept-9");
 
 insert into tbl_subject(name,espb, department_id) values ("subject-1", 10, 8);
 

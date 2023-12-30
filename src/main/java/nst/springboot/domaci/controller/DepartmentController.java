@@ -2,7 +2,6 @@ package nst.springboot.domaci.controller;
 
 import jakarta.validation.Valid;
 import nst.springboot.domaci.dto.DepartmentDto;
-import nst.springboot.domaci.model.Department;
 import nst.springboot.domaci.service.DepartmentService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +16,7 @@ import java.util.List;
 @RequestMapping("/department")
 public class DepartmentController {
 
-    private DepartmentService departmentService;
+    private final DepartmentService departmentService;
 
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;

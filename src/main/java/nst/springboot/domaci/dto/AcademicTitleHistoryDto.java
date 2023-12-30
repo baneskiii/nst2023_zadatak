@@ -8,10 +8,10 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class AcademicTitleHistoryDto implements Serializable {
-    @NotNull(message = "Id clana je obavezno polje!")
+    @NotNull(message = "Clan je obavezno polje!")
     private MemberDto memberDto;
 
-    @NotNull(message = "Id akademskog zvanja je obavezno polje!")
+    @NotNull(message = "Akademsko zvanje je obavezno polje!")
     private AcademicTitleDto academicTitleDto;
 
     @PastOrPresent(message = "Datum pocetka mora biti u proslosti ili sadasnjosti!")
@@ -22,7 +22,7 @@ public class AcademicTitleHistoryDto implements Serializable {
     @NotNull(message = "Datum zavrsetka je obavezno polje!")
     private LocalDate endDate;
 
-    @NotNull(message = "Id clana je obavezno polje!")
+    @NotNull(message = "Uza naucna oblast je obavezno polje!")
     private ScientificFieldDto scientificFieldDto;
 
     public AcademicTitleHistoryDto() {

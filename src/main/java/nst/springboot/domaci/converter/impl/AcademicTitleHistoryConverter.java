@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AcademicTitleHistoryConverter implements DtoEntityConverter<AcademicTitleHistoryDto, AcademicTitleHistory> {
-    private MemberConverter memberConverter;
-    private AcademicTitleConverter academicTitleConverter;
-    private ScientificFieldConverter scientificFieldConverter;
+    private final MemberConverter memberConverter;
+    private final AcademicTitleConverter academicTitleConverter;
+    private final ScientificFieldConverter scientificFieldConverter;
 
     public AcademicTitleHistoryConverter(MemberConverter memberConverter, AcademicTitleConverter academicTitleConverter, ScientificFieldConverter scientificFieldConverter) {
         this.memberConverter = memberConverter;
