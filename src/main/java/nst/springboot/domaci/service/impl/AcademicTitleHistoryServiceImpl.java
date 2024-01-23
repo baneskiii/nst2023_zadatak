@@ -72,6 +72,11 @@ public class AcademicTitleHistoryServiceImpl implements AcademicTitleHistoryServ
     }
 
     @Override
+    public List<AcademicTitleHistoryDto> getByMember(Long id) {
+        return academicTitleHistoryRepository.findByMemberId(id).stream().map(academicTitleHistoryConverter::toDto).collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public void delete(Long memberId, Long academicTitleId) throws Exception {
         Optional<AcademicTitleHistory> academicTitleHistory = academicTitleHistoryRepository.findById(new AcademicTitleHistoryId(memberId, academicTitleId));

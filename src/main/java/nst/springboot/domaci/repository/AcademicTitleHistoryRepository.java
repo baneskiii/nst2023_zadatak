@@ -9,4 +9,6 @@ import java.util.List;
 
 @Repository
 public interface AcademicTitleHistoryRepository extends JpaRepository<AcademicTitleHistory, AcademicTitleHistoryId> {
+
+    List<AcademicTitleHistory> findByMemberId(Long memberId);
 }

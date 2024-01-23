@@ -1,7 +1,9 @@
 package nst.springboot.domaci.controller;
 
 import jakarta.validation.Valid;
+import nst.springboot.domaci.dto.AcademicTitleHistoryDto;
 import nst.springboot.domaci.dto.MemberDto;
+import nst.springboot.domaci.service.AcademicTitleHistoryService;
 import nst.springboot.domaci.service.MemberService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,9 +18,11 @@ import java.util.List;
 @RequestMapping("/member")
 public class MemberController {
     private final MemberService memberService;
+    private final AcademicTitleHistoryService academicTitleHistoryService;
 
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, AcademicTitleHistoryService academicTitleHistoryService) {
         this.memberService = memberService;
+        this.academicTitleHistoryService = academicTitleHistoryService;
     }
 
     @PostMapping
@@ -52,6 +56,12 @@ public class MemberController {
     @GetMapping("/{id}")
     public MemberDto findById(@PathVariable("id") Long id) throws Exception{
         return memberService.findById(id);
+    }
+
+    @GetMapping("/{id}/history")
+    public ResponseEntity<Object> getHistory(@PathVariable("id") Long id) throws Exception{
+        List<AcademicTitleHistoryDto> history = academicTitleHistoryService.getByMember(id);
+        return new ResponseEntity<>(history, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

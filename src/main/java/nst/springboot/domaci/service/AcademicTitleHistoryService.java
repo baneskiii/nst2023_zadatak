@@ -12,6 +12,8 @@ public interface AcademicTitleHistoryService {
 
     List<AcademicTitleHistoryDto> getAll();
 
+    List<AcademicTitleHistoryDto> getByMember(Long id);
+
     void delete(Long memberId, Long academicTitleId) throws Exception;
 
     void update(AcademicTitleHistoryDto academicTitleHistoryDto) throws Exception;
