@@ -13,13 +13,10 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-permissions:
-  contents: read
-  actions: read
-  checks: write
+
 jobs:
-  build-test:
-    name: Build & Test
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -32,10 +29,3 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: JUNIT Tests            # Name of the check run which will be created
-        path: reports/junit-*.xml    # Path to test results
-        reporter: java-junit
