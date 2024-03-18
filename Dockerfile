@@ -1,3 +1,5 @@
 FROM openjdk:17-jdk-alpine
-COPY target/domaci-0.0.1-SNAPSHOT
-ENTRYPOINT ["java","-jar","/domaci-0.0.1-SNAPSHOT.jar"]
+RUN mkdir app
+COPY target/domaci-0.0.1-SNAPSHOT.jar app/domaci-0.0.1-SNAPSHOT.jar
+EXPOSE 8080
+CMD ["java","-jar","app/domaci-0.0.1-SNAPSHOT.jar"]
